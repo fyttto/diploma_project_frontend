@@ -1,43 +1,22 @@
-import { useState } from 'react'
-import logo from '../static/img/logo.svg'
-import './App.css'
+import React, { Fragment } from 'react';
+import Login from './page/login';
+import Home from './page/home';
+// @ts-ignore
+import { HashRouter, Route, Switch, Redirect } from 'react-router-dom'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Hello Vite + React!</p>
-        <p>
-          <button type="button" onClick={() => setCount((count) => count + 1)}>
-            count is: {count}
-          </button>
-        </p>
-        <p>
-          Edit <code>App.tsx</code> and save to test HMR updates.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-         我是一个新项目
-          </a>
-          {' | '}
-          <a
-            className="App-link"
-            href="https://vitejs.dev/guide/features.html"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Vite Docs
-          </a>
-        </p>
-      </header>
+      <Fragment>
+        <HashRouter>
+          <Switch>
+            <Route path="/login" component={Login} onEnter={()=>{document.title="log in"}} />
+            <Route path="/home" component={Home} onEnter={()=>{document.title="主页"}} />
+            <Route exact path="/" component={Home} />
+            <Redirect to={"/home"} />
+          </Switch>
+        </HashRouter>
+      </Fragment>
     </div>
   )
 }
