@@ -4,8 +4,7 @@ import './index.scss'
 type Props={
     history:any
 }
-
-class Login extends React.PureComponent<Props> {
+class Login extends React.Component<Props> {
     render() {
         return (
            <div className="P-login">
