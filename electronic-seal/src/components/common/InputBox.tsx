@@ -1,10 +1,15 @@
 import React, { Component } from 'react'
 
- class InputBox extends Component {
+type InputProps = {
+
+    text?:String
+}
+
+ class InputBox extends React.Component<InputProps> {
     render() {
         return (
             <div>
-                
+                <input type="text" />
             </div>
         )
     }
